@@ -1,0 +1,9 @@
+/home/gabel/projects/pi_drone/build/CMakeFiles/install/local.dir
+/home/gabel/projects/pi_drone/build/CMakeFiles/install.dir
+/home/gabel/projects/pi_drone/build/CMakeFiles/list_install_components.dir
+/home/gabel/projects/pi_drone/build/CMakeFiles/rebuild_cache.dir
+/home/gabel/projects/pi_drone/build/CMakeFiles/pi_serial.dir
+/home/gabel/projects/pi_drone/build/CMakeFiles/edit_cache.dir
+/home/gabel/projects/pi_drone/build/CMakeFiles/pi_sock.dir
+/home/gabel/projects/pi_drone/build/CMakeFiles/install/strip.dir
+/home/gabel/projects/pi_drone/build/CMakeFiles/pi_drone.dir

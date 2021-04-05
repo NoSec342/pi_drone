@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/gabel/projects/pi_drone/build",
+  "command": "/usr/bin/c++ -Dpi_serial_EXPORTS  -g -fPIC -o CMakeFiles/pi_serial.dir/pi_serial.cpp.o -c /home/gabel/projects/pi_drone/pi_serial.cpp",
+  "file": "/home/gabel/projects/pi_drone/pi_serial.cpp"
+},
+{
+  "directory": "/home/gabel/projects/pi_drone/build",
+  "command": "/usr/bin/c++ -Dpi_sock_EXPORTS  -g -fPIC -o CMakeFiles/pi_sock.dir/pi_sock.cpp.o -c /home/gabel/projects/pi_drone/pi_sock.cpp",
+  "file": "/home/gabel/projects/pi_drone/pi_sock.cpp"
+},
+{
+  "directory": "/home/gabel/projects/pi_drone/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/pi_drone.dir/main.cpp.o -c /home/gabel/projects/pi_drone/main.cpp",
+  "file": "/home/gabel/projects/pi_drone/main.cpp"
+}
+]

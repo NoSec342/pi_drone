@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gabel/projects/pi_drone/pi_sock.cpp
+pi_sock.hpp
+/home/gabel/projects/pi_drone/pi_sock.hpp
+
+/home/gabel/projects/pi_drone/pi_sock.hpp
+stdio.h
+-
+sys/socket.h
+-
+sys/types.h
+-
+arpa/inet.h
+-
+memory
+-
+unistd.h
+-
+string
+-
+cstring
+-
+

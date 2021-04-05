@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gabel/projects/pi_drone/pi_serial.cpp
+iostream
+-
+stdlib.h
+-
+pi_serial.hpp
+/home/gabel/projects/pi_drone/pi_serial.hpp
+unistd.h
+-
+termios.h
+-
+
+/home/gabel/projects/pi_drone/pi_serial.hpp
+

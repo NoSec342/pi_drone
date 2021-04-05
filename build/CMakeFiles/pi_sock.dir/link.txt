@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g -shared -Wl,-soname,libpi_sock.so -o libpi_sock.so CMakeFiles/pi_sock.dir/pi_sock.cpp.o 

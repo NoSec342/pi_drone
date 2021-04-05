@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g -shared -Wl,-soname,libdrone.so -o libdrone.so CMakeFiles/drone.dir/pi_sock.cpp.o 

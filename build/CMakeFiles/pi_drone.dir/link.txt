@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/pi_drone.dir/main.cpp.o -o pi_drone  -Wl,-rpath,/home/gabel/projects/pi_drone/build: libpi_sock.so libpi_serial.so 

@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -g -shared -Wl,-soname,libwiringpi.so -o libwiringpi.so CMakeFiles/wiringpi.dir/opt/WiringPi/wiringPi/wiringPi.c.o 
