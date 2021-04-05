@@ -64,7 +64,7 @@ void pi_sock::WriteToClient(const std::string& fa_msg)
     m_rw_status = send(m_client_fd, m_buffer, sizeof(m_buffer), 0);
     if(m_rw_status < 0)
     {
-        fprintf(stderr, "Can't read form client! Check connection! \n");
+        fprintf(stderr, "Can't write to client! Check connection! \n");
     }
     
 }
