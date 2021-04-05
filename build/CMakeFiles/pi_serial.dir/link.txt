@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -g -shared -Wl,-soname,libpi_serial.so -o libpi_serial.so CMakeFiles/pi_serial.dir/pi_serial.cpp.o 
