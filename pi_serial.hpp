@@ -4,7 +4,7 @@
 class pi_serial
 {
 private:
-    const serial_port;
+    int8_t serial_port;
     
     
 public:
