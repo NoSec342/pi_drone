@@ -10,17 +10,12 @@ int main(int argc, char **argv) {
     
     uint16_t port = argc > 1 ? atoi(argv[1]) : 54000;
     std::cout << port << std::endl;
+    
+    //MOMENTAN NU E GATA, IL VOI LASA SA RULEZE DREPT SERVER TCP RAW
     pi_sock Socket(port);
     Socket.pi_listen();
     
-    pi_serial Serial;
-    
-    
     while(true)
-    {
-        std::cout << Socket;
-        
-    }
     
     return 0;
 }
