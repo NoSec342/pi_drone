@@ -7,6 +7,7 @@
 #include "pi_serial.hpp"
 int main(int argc, char **argv) {
 
+    //W.I.P
     
     uint16_t port = argc > 1 ? atoi(argv[1]) : 54000;
     std::cout << port << std::endl;
@@ -16,6 +17,11 @@ int main(int argc, char **argv) {
     Socket.pi_listen();
     
     while(true)
+    {
+        std::cout << Socket << std::endl;
+    }
     
     return 0;
 }
+
+
