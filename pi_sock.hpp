@@ -48,4 +48,17 @@ std::ostream& operator<<(std::ostream& stream, pi_sock& fa_sock)
     stream << fa_sock.ReadFromClient();
     return stream;
 }
+
+
+std::string& operator<<( std::string& fa_msg, pi_sock& fa_sock)
+{
+    fa_msg = fa_sock.ReadFromClient();
+    return fa_msg;
+}
+const std::string& operator>>(const std::string& fa_msg, pi_sock& fa_sock)
+{
+    fa_sock.WriteToClient(fa_msg);
+    return fa_msg;
+}
+
 #endif
