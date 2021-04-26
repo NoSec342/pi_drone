@@ -13,9 +13,9 @@ class motorctl
 private:
     
 public:
-    motorctl(const uint8_t* fa_pin, const uint8_t& fa_pin2);
+    motorctl(const uint8_t& fa_pin);
     ~motorctl();
-    virtual void write_to_pcb(const uint8_t& fa_val, const uint8_t& fa_len, const uint8_t& fa_pin) const;
+    virtual void write_to_pcb(const uint8_t& fa_val, const uint8_t& fa_pin) const;
 
 };
 
