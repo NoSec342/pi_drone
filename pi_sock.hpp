@@ -27,7 +27,7 @@ public:
     ~pi_sock();
     virtual void pi_listen();
     virtual const std::string ReadFromClient();
-    virtual void WriteToClient(const std::string& idk);
+    virtual void WriteToClient(const std::string& msg);
     
 };
 std::istream& operator>>(std::istream& stream, pi_sock& fa_sock)

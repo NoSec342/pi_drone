@@ -1,27 +1,22 @@
 #include <iostream>
 #include <stdio.h>
 #include "pi_sock.hpp"
-#include <stdlib.h>
-#include <fcntl.h>
-#include <termios.h>
-#include "pi_serial.hpp"
-int main(int argc, char **argv) {
 
-    //W.I.P
+
+int main(int argc, char **argv) 
+{
     
-    uint16_t port = argc > 1 ? atoi(argv[1]) : 54000;
-    std::cout << port << std::endl;
-    
-    //MOMENTAN NU E GATA, IL VOI LASA SA RULEZE DREPT SERVER TCP RAW
-    pi_sock Socket(port);
-    Socket.pi_listen();
-    
+    uint16_t port = argc > 1 ? std::stoi(argv[1]) : 54000;
+    pi_sock Sock(port);
+    Sock.pi_listen();
     while(true)
     {
-        std::cout << Socket << std::endl;
+        std::cout << Sock;
+        if(!Sock.is_client_connected)
+        {
+            fprintf(stderr, "Client Disconnected!\n");
+            return 0;
+        }
     }
-    
     return 0;
 }
-
-

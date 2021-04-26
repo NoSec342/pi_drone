@@ -6,5 +6,6 @@ add_executable(pi_drone main.cpp)
 
 install(TARGETS pi_drone RUNTIME DESTINATION bin)
 add_library(pi_sock SHARED pi_sock.cpp pi_sock.hpp)
-add_library(pi_serial SHARED pi_serial.cpp pi_serial.hpp)
-target_link_libraries(pi_drone PUBLIC pi_sock pi_serial)
+add_library(pi_motorctl SHARED pi_motorctl.cpp pi_motorctl.hpp)
+target_link_libraries(pi_drone PUBLIC  pi_sock pi_motorctl )
+
