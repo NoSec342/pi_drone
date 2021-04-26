@@ -9,6 +9,8 @@
 #include <string>
 #include <cstring>
 
+// PENTRU SCOPURILE FUNCTIILOR VERIFICATI pi_sock.cpp
+// O CLASA CU DEFINITIILE FUNCTIILOR DE CARE VA FI NEVOIE PENTRU COMUNICAREA PE RETEA
 
 class pi_sock 
 {
@@ -30,6 +32,10 @@ public:
     virtual void WriteToClient(const std::string& msg);
     
 };
+
+// AICI AM REINCARCAT OPERATORII << (bitshift left) SI >> (bitshift right) PENTRU A FACE 
+// MAI USOARA CITIREA SI SCRIEREA PE ACEASTA CLASA
+
 std::istream& operator>>(std::istream& stream, pi_sock& fa_sock)
 {
     std::string f_message_to_send;

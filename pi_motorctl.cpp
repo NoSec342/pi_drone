@@ -1,25 +1,29 @@
 #include "pi_motorctl.hpp"
 
-motorctl::motorctl(const uint8_t& fa_pin1)
+motorctl::motorctl(const uint8_t& fa_pin)
+    : m_PIN(fa_pin)
 {
-//init
+//VOI INITIALIZA BIBLIOTECA PENTRU A FOLOSI PINII GPIO CU SCHEMA DE NUMARARE 1 - 16 SI VOI SETA PINUL DE IESIRE 
     wiringPiSetup();
-    pinMode(fa_pin1, OUTPUT);
+    pinMode(m_PIN, OUTPUT);
     
 }
 
 motorctl::~motorctl()
 {
-    
+//AICI NU-I GATA
 }
 
 
-void motorctl::write_to_pcb(const uint8_t& fa_val, const uint8_t& fa_pin) const
+void motorctl::write_to_pcb(const uint8_t& fa_val) const
 {
+//AICI VOI PRELUA ORICE VALOARE UNSIGNED INT DE 8 BITI SI O VOI STOCA INTR-UN SIR DE BITI
     std::bitset<8> f_val_in_bits(fa_val);
+//AICI VOI TRIMITE BITII PE RAND CATRE PINUL GPIO DE IESIRE
     for(uint8_t i = 0; i < f_val_in_bits.size(); i++)
     {
-        digitalWrite(fa_pin, f_val_in_bits[i]);
+        digitalWrite(this->m_PIN, f_val_in_bits[i]);
+//DELAY DE 1 MILISECUNDA PENTRU A SE SINCRONIZA CU PLACA DE DEZVOLTARE CE CONTROLEAZA MOTOARELE
         delay(1);
     }
 }

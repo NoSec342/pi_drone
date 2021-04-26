@@ -1,5 +1,10 @@
 #include "pi_sock.hpp"
 
+//AICI VOI INITIALIZA UN SOCKET PE BAZA UNUI DESCRIPTOR DE FISIER, VOI INITIALIZA ON STRUCTURA 
+// HINT CARE VA RETINE INFORMATII PRECUM VERSIUNEA IP-ULUI FOLOSIT (IN ACEST CAZ IPv4), PORT-UL
+// PE CARE DRONA VA ASCULTA INSTRUCTIUNILE SI INTERFATA DE RETEA PE CARE VA ASCULTA (IN ACEST CAZ
+// ORICE INTERFATA DE RETEA)
+
 pi_sock::pi_sock(const uint16_t& fa_port)
 {
     m_error_exit = false;
@@ -24,11 +29,15 @@ pi_sock::pi_sock(const uint16_t& fa_port)
     }
 }
 
+// AICI VOI INCHIDE DESCRIPTORII DE FISIER
+
 pi_sock::~pi_sock()
 {
     close(m_server_fd);
     close(m_client_fd);
 }
+
+// AICI VOI PORNI ASCULTAREA PE UN PORTUL DEFINIT MAI SUS
 
 
 void pi_sock::pi_listen() 
@@ -46,6 +55,9 @@ void pi_sock::pi_listen()
     
 }
 
+
+// FUNCTIE DE CITIRE DE LA UN CLIENT CONECTAT
+
 const std::string pi_sock::ReadFromClient()
 {
     memset(m_buffer, 0, sizeof(m_buffer));
@@ -57,6 +69,9 @@ const std::string pi_sock::ReadFromClient()
     }
     return std::string(m_buffer);
 }
+
+// FUNCTIE DE SCRIERE CATRE UN CLIENT CONECTAT
+
 void pi_sock::WriteToClient(const std::string& fa_msg)
 {
     memset(&m_buffer, 0, 4096);
