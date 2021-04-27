@@ -9,11 +9,13 @@ make;
 
 if [ $EUID != "0" ];then
 	sudo ln -s $SOURCE_DIR/build/pi_drone /usr/bin/pi_drone
-	sudo systemctl link pidrn.service
-	sudo systemctl enable pidrn.service
+	cd ..
+	sudo systemctl link ./pidrn.service
+	sudo systemctl enable pidrn
 else
 	ln -s $SOURCE_DIR/build/pi_drone /usr/bin/pi_drone
-	systemctl link pidrn.service
-	systemctl enable pidrn.service
+	cd ..
+	systemctl link ./pidrn.service
+	systemctl enable pidrn
 fi
 
