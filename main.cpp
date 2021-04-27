@@ -11,7 +11,7 @@ int main(int argc, char **argv)
     uint16_t port = argc > 1 ? std::stoi(argv[1]) : 54000;
     pi_sock Sock(port);
     Sock.pi_listen();
-    motorctl Motor(10); // TREBUIE SA GASESC UN PIN BUN
+    motorctl Motor(5); // TREBUIE SA GASESC UN PIN BUN
 
     while(true)
     {
@@ -46,6 +46,12 @@ int main(int argc, char **argv)
         }
         
         Motor.write_to_pcb(255);
+        
+        if(!Sock.is_client_connected)
+        {
+            fprintf(stderr, "Client disconnected!\n");
+            return ENETRESET;
+        }
     }
     return 0;
 }
