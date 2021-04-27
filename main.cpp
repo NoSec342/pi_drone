@@ -18,6 +18,8 @@ int main(int argc, char **argv)
         
         std::string buffer;
         buffer << Sock;
+        fprintf(stdout , "Received : %s" , buffer.c_str());
+        
         uint8_t rotation = buffer.find("ROTATE_LEFT") != std::string::npos ? buffer.find("ROTATE_RIGHT") != std::string::npos ? 101 : 100 : 0;
         Motor.write_to_pcb(255);
         Motor.write_to_pcb(200);
