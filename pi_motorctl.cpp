@@ -18,12 +18,12 @@ motorctl::~motorctl()
 void motorctl::write_to_pcb(const uint8_t& fa_val) const
 {
 //AICI VOI PRELUA ORICE VALOARE UNSIGNED INT DE 8 BITI SI O VOI STOCA INTR-UN SIR DE BITI
-    std::bitset<8> f_val_in_bits(fa_val);
 //AICI VOI TRIMITE BITII PE RAND CATRE PINUL GPIO DE IESIRE
+//DELAY DE 1 MILISECUNDA PENTRU A SE SINCRONIZA CU PLACA DE DEZVOLTARE CE CONTROLEAZA MOTOARELE
+    std::bitset<8> f_val_in_bits(fa_val);
     for(uint8_t i = 0; i < f_val_in_bits.size(); i++)
     {
         digitalWrite(this->m_PIN, f_val_in_bits[i]);
-//DELAY DE 1 MILISECUNDA PENTRU A SE SINCRONIZA CU PLACA DE DEZVOLTARE CE CONTROLEAZA MOTOARELE
         delay(1);
     }
 }

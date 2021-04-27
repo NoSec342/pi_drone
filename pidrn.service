@@ -1,0 +1,7 @@
+[Unit]
+Description=PI Drone Service
+[Service]
+Type=forking
+ExecStart=/bin/bash -c "sleep 10 && /usr/bin/pi_drone"
+[Install]
+WantedBy=multi-user.target
