@@ -40,12 +40,15 @@ int main(int argc, char **argv)
             is_moving = true;
             direction = 15;
         }
-        Motor.write_to_pcb(255);
-        Motor.write_to_pcb(100);
-        Motor.write_to_pcb(rotation);
-        Motor.write_to_pcb(direction);        
-        Motor.write_to_pcb(255);
-        is_moving = false;
+        if(is_moving)
+        {
+            Motor.write_to_pcb(255);
+            Motor.write_to_pcb(100);
+            Motor.write_to_pcb(rotation);
+            Motor.write_to_pcb(direction);        
+            Motor.write_to_pcb(255);
+            is_moving = false;
+        }
         if(!Sock.is_client_connected)
         {
             fprintf(stderr, "Client disconnected!\n");
