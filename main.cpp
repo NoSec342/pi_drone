@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include "pi_sock.hpp"
 #include "pi_motorctl.hpp"
-#include <thread> 
-
 
 
 int main(int argc, char **argv) 
@@ -16,8 +14,9 @@ int main(int argc, char **argv)
 
     while(true)
     {
-        std::string buffer;
-        buffer << Sock;
+        
+        std::string buffer;             // AICI VOI APELA FUNCTIA DE MISCARE CU PARAMETRU PRIMIT
+        buffer << Sock;                 // DIRECT DE PE RETEA
         fprintf(stdout , "Received : %s" , buffer.c_str());
         Motor.Move(std::stoi(buffer.c_str())); 
     }

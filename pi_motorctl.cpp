@@ -1,11 +1,11 @@
 #include "pi_motorctl.hpp"
 
-motorctl::motorctl()
+motorctl::motorctl() 
 {
-//VOI INITIALIZA BIBLIOTECA PENTRU A FOLOSI PINII GPIO CU SCHEMA DE NUMARARE 1 - 16 SI VOI SETA PINUL DE IESIRE 
-    wiringPiSetup();
-//VOI INITIALIZA PINII
-    pinMode(FORWARD, OUTPUT);
+
+    wiringPiSetup(); //VOI INITIALIZA BIBLIOTECA PENTRU A FOLOSI PINII GPIO CU SCHEMA DE NUMARARE       
+                     //1 - 16 SI VOI SETA PINUL DE IESIRE 
+    pinMode(FORWARD, OUTPUT);       //VOI INITIALIZA PINII
     pinMode(BACKWARDS, OUTPUT);
     pinMode(LEFT, OUTPUT);
     pinMode(RIGHT, OUTPUT);
@@ -22,8 +22,10 @@ motorctl::motorctl()
 
 motorctl::~motorctl()
 {
-//AICI NU-I GATA
+// MOMENTAN NIMIC AICI
 }
+
+// FUNCTIE CE VA TRIMITE SEMNAL PE PINUL PRIMIT CA PARAMETRU
 
 void motorctl::Move(const uint8_t& fa_what_to_move) const
 {

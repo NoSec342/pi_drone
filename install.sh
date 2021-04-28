@@ -7,15 +7,16 @@ cmake ./ -B ./build;
 cd build/;
 make;
 
-if [ $EUID != "0" ];then
-	sudo ln -s $SOURCE_DIR/build/pi_drone /usr/bin/pi_drone
+if [ $EUID == "0" ];then
 	cd ..
-	sudo systemctl link ./pidrn.service
-	sudo systemctl enable pidrn
-else
 	ln -s $SOURCE_DIR/build/pi_drone /usr/bin/pi_drone
-	cd ..
 	systemctl link ./pidrn.service
 	systemctl enable pidrn
+	systemctl start pidrn
+else
+	cd ..
+	sudo ln -s $SOURCE_DIR/build/pi_drone /usr/bin/pi_drone
+	sudo systemctl link ./pidrn.service
+	sudo systemctl enable pidrn
+	sudo systemctl start pidrn
 fi
-
