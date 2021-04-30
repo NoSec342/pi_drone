@@ -23,7 +23,8 @@ private:
     
     
 public:
-    bool m_error_exit, is_client_connected;
+    bool is_client_connected = false;
+    std::string m_error_msg = std::string("");
     
     pi_sock(const uint16_t& fa_port);
     ~pi_sock();

@@ -7,25 +7,22 @@
 
 pi_sock::pi_sock(const uint16_t& fa_port)
 {
-    m_error_exit = false;
-    is_client_connected = false;
     m_server_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if(m_server_fd < 0)
-    {
-        fprintf(stderr, "Could not open socket!\n");
-        m_error_exit = true;
-        is_client_connected = false;
-    }
-    m_port = fa_port;
     m_server.sin_port = htons(m_port);
     m_server.sin_family = AF_INET;
     m_server.sin_addr.s_addr = INADDR_ANY;
     m_server_len = sizeof(m_server);
+    m_port = fa_port;
+    is_client_connected = true;
     if(bind(m_server_fd, (sockaddr *)&m_server, m_server_len ) < 0)
     {
-        fprintf(stderr, "Could not bind to address!\n");
-        m_error_exit = true;
-
+        m_error_msg =  "Could not bind to address!\n";
+        is_client_connected = false;
+    }
+    if(m_server_fd < 0)
+    {
+        m_error_msg = "Could not open socket!\n";
+        is_client_connected = false;
     }
 }
 
@@ -44,13 +41,18 @@ void pi_sock::pi_listen()
 {
     
         
-    m_error_exit = listen(m_server_fd, SOMAXCONN) < 0 ? true : false;
+    if(listen(m_server_fd, SOMAXCONN) < 0)
+    {
+        m_error_msg = "Can not listen! \n";
+        is_client_connected = false;
+    }
     
     m_client_fd = accept(m_server_fd, (sockaddr *)&m_server, &m_server_len);
-    is_client_connected = true;
-    m_error_exit = m_client_fd < 0 ? true : false;
-    is_client_connected = m_client_fd < 0 ? false : true;
-    
+    if(m_client_fd < 0)
+    {
+        m_error_msg = "Can not connect to client! \n";
+        is_client_connected = false;
+    }
     
     
 }
@@ -64,10 +66,10 @@ const std::string pi_sock::ReadFromClient()
     m_rw_status = recv(m_client_fd, m_buffer, sizeof(m_buffer), 0);
     if(m_rw_status < 0)
     {
-        
-        return "Can't read form client! Check connection! \n";
+        m_error_msg =  "Can't read form client! Check connection! \n";
     }
     return std::string(m_buffer);
+
 }
 
 // FUNCTIE DE SCRIERE CATRE UN CLIENT CONECTAT
@@ -79,7 +81,7 @@ void pi_sock::WriteToClient(const std::string& fa_msg)
     m_rw_status = send(m_client_fd, m_buffer, sizeof(m_buffer), 0);
     if(m_rw_status < 0)
     {
-        fprintf(stderr, "Can't read form client! Check connection! \n");
+        m_error_msg = "Can't WriteToClient client! Check connection! \n";
     }
     
 }
