@@ -14,7 +14,7 @@ motorctl::motorctl()
     pinMode(MOTOR_POWER1, OUTPUT);
     pinMode(MOTOR_POWER2, OUTPUT);
     pinMode(MOTOR_POWER3, OUTPUT);
-    pinMode(MOTOR_POWER4, OUTPUT);
+    pinMode(POWER_DOWN, OUTPUT);
     
     
     
