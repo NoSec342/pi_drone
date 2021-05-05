@@ -8,11 +8,11 @@
 pi_sock::pi_sock(const uint16_t& fa_port)
 {
     m_server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    m_port = fa_port;
     m_server.sin_port = htons(m_port);
     m_server.sin_family = AF_INET;
     m_server.sin_addr.s_addr = INADDR_ANY;
     m_server_len = sizeof(m_server);
-    m_port = fa_port;
     is_client_connected = true;
     if(bind(m_server_fd, (sockaddr *)&m_server, m_server_len ) < 0)
     {
