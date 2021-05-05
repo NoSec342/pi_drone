@@ -27,7 +27,7 @@ public:
     std::string m_error_msg = std::string("");
     
     pi_sock(const uint16_t& fa_port);
-    ~pi_sock();
+    virtual ~pi_sock();
     virtual void pi_listen();
     virtual const std::string ReadFromClient();
     virtual void WriteToClient(const std::string& msg);

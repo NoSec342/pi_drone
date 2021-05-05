@@ -12,8 +12,12 @@ int main(int argc, char **argv)
     pi_sock Sock(port); 
     Sock.pi_listen();
     motorctl Motor; 
-
-    std::thread send_err_to_client([&]
+    while(!Sock.is_client_connected)
+    {
+        fprintf(stdout, "Waitting for client!\n");
+        delay(2000);
+    }
+    std::thread send_err_to_client([&](void)
     {
         while(true)                     // VOI INITIALIZA UN THREAD CARE VA VERFICA DACA SUNT 
         {                               // PROBLEME , DACA APAR PROBLEME LA CONEXIUNI , LE VA 
@@ -34,7 +38,9 @@ int main(int argc, char **argv)
         fprintf(stdout , "Received : %s" , buffer.c_str());
         Motor.Move(std::atoi(buffer.c_str())); 
         buffer = "";
-    }                                      
+
+    }
+    
     return 0;
 }
 
