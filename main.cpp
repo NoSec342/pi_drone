@@ -17,7 +17,7 @@ int main(int argc, char **argv)
         fprintf(stdout, "Waitting for client!\n");
         delay(2000);
     }
-    std::thread send_err_to_client([&](void)
+   /* std::thread send_err_to_client([&](void)
     {
         while(true)                     // VOI INITIALIZA UN THREAD CARE VA VERFICA DACA SUNT 
         {                               // PROBLEME , DACA APAR PROBLEME LA CONEXIUNI , LE VA 
@@ -28,13 +28,14 @@ int main(int argc, char **argv)
             }                          // CONTINUU
         }
     });
-    send_err_to_client.detach();        // VOI DETASA THREAD-UL DEOARECE TREBUIE SA RULEZE 
+    send_err_to_client.detach();   */     // VOI DETASA THREAD-UL DEOARECE TREBUIE SA RULEZE 
                                         // SEPARAT FATA DE COD
     while(true)
     {
         
         std::string buffer;             // AICI VOI APELA FUNCTIA DE MISCARE CU PARAMETRU PRIMIT
         buffer << Sock;                 // DIRECT DE PE RETEA
+        buffer += "\n";
         fprintf(stdout , "Received : %s" , buffer.c_str());
         Motor.Move(std::atoi(buffer.c_str())); 
         buffer = "";
