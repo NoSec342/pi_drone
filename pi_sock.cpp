@@ -86,8 +86,31 @@ void pi_sock::WriteToClient(const std::string& fa_msg)
     
 }
 
+std::istream& operator>>(std::istream& stream, pi_sock& fa_sock)
+{
+    std::string f_message_to_send;
+    stream >> f_message_to_send;
+    fa_sock.WriteToClient(f_message_to_send);
+    return stream;
+}
 
+std::ostream& operator<<(std::ostream& stream, pi_sock& fa_sock)
+{
+    stream << fa_sock.ReadFromClient();
+    return stream;
+}
 
+std::string& operator<<( std::string& fa_msg, pi_sock& fa_sock)
+{
+    fa_msg = fa_sock.ReadFromClient();
+    return fa_msg;
+}
+
+const std::string& operator>>(const std::string& fa_msg, pi_sock& fa_sock)
+{
+    fa_sock.WriteToClient(fa_msg);
+    return fa_msg;
+}
 
 
 
