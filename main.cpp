@@ -11,35 +11,20 @@ int main(int argc, char **argv)
     uint16_t port = argc > 1 ? std::atoi(argv[1]) : 54000; // PRIMUL ARGUMENT VA REPREZENTA PORTUL PE CARE VA ASCULTA DRONA
     pi_sock Sock(port); 
     Sock.pi_listen();
-    motorctl Motor; 
+    motorctl Motor("/dev/serial0", B9600); 
     while(!Sock.is_client_connected)
     {
         fprintf(stdout, "Waitting for client!\n");
-        delay(2000);
+        sleep(2);
     }
-   /* std::thread send_err_to_client([&](void)
-    {
-        while(true)                     // VOI INITIALIZA UN THREAD CARE VA VERFICA DACA SUNT 
-        {                               // PROBLEME , DACA APAR PROBLEME LA CONEXIUNI , LE VA 
-            if(Sock.m_error_msg != "")  // TRIMITE CATRE CLIENT
-            {
-               Sock.m_error_msg >> Sock;
-               Sock.m_error_msg = "";  // VOI GOLI MESAJUL DE EROARE PENTRU A NU FI TRIMIS IN
-            }                          // CONTINUU
-        }
-    });
-    send_err_to_client.detach();   */     // VOI DETASA THREAD-UL DEOARECE TREBUIE SA RULEZE 
-                                        // SEPARAT FATA DE COD
-    while(true)
+    while(Sock.is_client_connected)
     {
         
-        std::string buffer;             // AICI VOI APELA FUNCTIA DE MISCARE CU PARAMETRU PRIMIT
+        std::string buffer;          // AICI VOI APELA FUNCTIA DE MISCARE CU PARAMETRU PRIMIT
         buffer << Sock;                 // DIRECT DE PE RETEA
-        buffer += "\n";
         fprintf(stdout , "Received : %s" , buffer.c_str());
-        Motor.Move(std::atoi(buffer.c_str())); 
+        Motor.Move(buffer); 
         buffer = "";
-
     }
     
     return 0;

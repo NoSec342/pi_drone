@@ -2,28 +2,28 @@
 #define _PI_MOTOR_CTL_
 
 #include <iostream>
-#include <wiringPi.h>
+#include <termios.h>
 #include <string>
-#include <bitset>
-#include <array>
-
-
-
-
-//DEFINITIA CLASEI PENTRU ACCESAREA PLACII DE DEZVOLTARE PENTRU CONTROLUL MOTOARELOR
-//PENTRU SCOPURILE FUNCTIILOR VEDETI pi_motorctl.cpp
-
+#include <fcntl.h>
+#include <unistd.h>
+#include <cstring>
 class motorctl
 {
 private:
-//VOI RETINE PINII FOLOSITI
-    const uint8_t FORWARD = 8, BACKWARDS = 9, LEFT = 7, RIGHT = 0, ROTATE_LEFT = 2, ROTATE_RIGHT = 3, MOTOR_POWER1 = 12, MOTOR_POWER2 = 13, MOTOR_POWER3 = 14,  POWER_DOWN = 30; 
+    
+    int8_t m_serial_fd;
+    const uint16_t m_baud;
+    std::string m_serial_dev;
+    char m_buffer[4096];
+        
 public: 
     
-    motorctl();
+    motorctl(const std::string& __serial_dev, const uint16_t& __baud); 
     ~motorctl();
-    virtual void Move(const uint8_t& fa_what_to_move)const;
-    
+    void Move(const std::string& __move_what) const;
+    struct termios serial_port;
 };
+
+std::ostream& operator<<(std::ostream& __stream, motorctl __motor);
 
 #endif
