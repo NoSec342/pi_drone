@@ -6,12 +6,11 @@ motorctl::motorctl(const std::string& __serial_dev, const uint16_t& __baud)
     m_serial_fd = open(m_serial_dev.c_str(), O_RDWR);
     if(m_serial_fd < 0)
     {
-        fprintf(stderr, "On file descriptor %s: ", m_serial_dev.c_str());
-        throw "Can not open descriptor\n";
+        fprintf(stderr, "On file descriptor %s: Can not open descriptor\n", m_serial_dev.c_str());
     }
     if(tcgetattr(m_serial_fd, &serial_port)) 
     {
-        throw "Can not set the serial port for writing to arduino!\n";
+        fprintf(stderr, "Can not set the serial port for writing to arduino!\n");
     }
     serial_port.c_cflag &= ~PARENB;
     serial_port.c_cflag &= ~CSTOPB;
@@ -32,7 +31,7 @@ motorctl::motorctl(const std::string& __serial_dev, const uint16_t& __baud)
     cfsetspeed(&serial_port, m_baud);
     if(tcsetattr(m_serial_fd, TCSANOW, &serial_port))
     {
-        throw "Can not set serial file descriptor settings!\n";
+        fprintf(stderr, "Can not set serial file descriptor settings!\n");
     }
     
 }
