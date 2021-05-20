@@ -44,7 +44,7 @@ motorctl::~motorctl()
 
 void motorctl::Move(const std::string& __move_what) const
 {
-    write(m_serial_fd, __move_what.c_str(), sizeof(char));
+    write(m_serial_fd, &__move_what[0], sizeof(char));
 }
 
 

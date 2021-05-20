@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         std::string buffer;          // AICI VOI APELA FUNCTIA DE MISCARE CU PARAMETRU PRIMIT
         buffer << Sock;                 // DIRECT DE PE RETEA
         fprintf(stdout , "Received : %s" , buffer.c_str());
-        Motor.Move(buffer); 
+        Motor.Move(buffer.c_str()); 
         buffer = "";
     }
     

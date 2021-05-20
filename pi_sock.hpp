@@ -37,12 +37,12 @@ public:
 // AICI AM REINCARCAT OPERATORII << (bitshift left) SI >> (bitshift right) PENTRU A FACE 
 // MAI USOARA CITIREA SI SCRIEREA PE ACEASTA CLASA
 
-std::istream& operator>>(std::istream& stream, pi_sock& fa_sock);
+std::istream& operator>>(std::istream& __stream, pi_sock& __sock);
 
-std::ostream& operator<<(std::ostream& stream, pi_sock& fa_sock);
+std::ostream& operator<<(std::ostream& __stream, pi_sock& __sock);
 
-std::string& operator<<( std::string& fa_msg, pi_sock& fa_sock);
+std::string& operator<<( std::string& fa_msg, pi_sock& __sock);
 
-const std::string& operator>>(const std::string& fa_msg, pi_sock& fa_sock);
+const std::string& operator>>(const std::string& __msg, pi_sock& __sock);
 
 #endif
