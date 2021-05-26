@@ -1,4 +1,4 @@
-# PI_DRONE
+# PI_DRONE (PROIECT INCHIS)
 
 O simpla drona realizate in c++ si arduino.
 Drona este compusa dintr-un raspberry pi zero,un adaptor de retea wi-fi (orice adaptor), 
